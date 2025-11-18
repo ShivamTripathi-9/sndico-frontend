@@ -75,7 +75,7 @@ const FurnitureLandingPage = () => {
           {/* RIGHT SIDE CARDS - Only visible on large screens (desktop) */}
           <div className="hidden lg:flex lg:col-span-4 flex-col gap-4">
 
-            {/* CARD 1 - Deal of the Day */}
+            {/* CARD 1 - */}
             <a 
               href="#deal-of-the-day" 
               className="relative overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer group block flex-1 min-h-[235px]"
