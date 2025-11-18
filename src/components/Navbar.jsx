@@ -61,14 +61,14 @@ const menuData = {
     ],
     featured: [
       {
-        label: "Luxury Velvet Sofa",
+        label: "Memory Foam Mattress",
         image:
-          "https://ii1.pepperfry.com/media/catalog/product/l/u/494x544/lucca-italian-marble-six-seater-dining-table-lucca-italian-marble-six-seater-dining-table-gokdnz.jpg"
+          "https://ii1.pepperfry.com/media/catalog/product/m/e/memory-foam-mattress-pepperfry-example.jpg"
       },
       {
-        label: "Marble Coffee Table",
+        label: "Premium Orthopedic Mattress",
         image:
-          "https://ii1.pepperfry.com/media/catalog/product/r/o/494x544/round-2-tier-marble-top-coffee-table-in-gold-colour-round-2-tier-marble-top-coffee-table-in-gold-col-79a1ou.jpg"
+          "https://ii1.pepperfry.com/media/catalog/product/o/r/orthopedic-mattress-pepperfry-example.jpg"
       }
     ]
   },
@@ -371,9 +371,9 @@ export default function Header() {
                   <p className="text-xs text-gray-600">Sofa Sets</p>
                 </div>
               </div>
-              {/* <div className="mt-6">
+              <div className="mt-6">
                 <button className="w-full py-3 text-white rounded-lg font-medium" style={{ background: "#FF7F19" }}>Buy On Phone</button>
-              </div> */}
+              </div>
               <ul className="mt-6 space-y-1">
                 {navItems.map((item) => (
                   <li key={item.id} className="py-3 px-2 text-gray-700 cursor-pointer hover:bg-gray-50 hover:text-orange-500 rounded transition-colors">{item.label}</li>
