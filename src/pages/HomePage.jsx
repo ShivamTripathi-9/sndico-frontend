@@ -1,14 +1,15 @@
 import React from 'react'
-import Navbar from '../components/Navbar'   // <-- IMPORT Navbar
+import Navbar from '../components/Navbar'   ;
+import NavigationBar from '../components/NavigationBar'   ;
+import SubcategoryView from '../components/SubcategoryView';  
 
 export default function HomePage() {
   return (
     <>
-      <Navbar />   {/* <-- Navbar Add Kiya */}
+      <Navbar />  
+      {/* <NavigationBar />
+      <SubcategoryView/> */}
 
-     <main className="p-6 m-0 p-0">
-  <h1 className="bg-red-600">Jai Shree Ram</h1>
-</main>
 
     </>
   )
