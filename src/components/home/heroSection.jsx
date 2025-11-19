@@ -85,7 +85,8 @@ const FurnitureLandingPage = () => {
                 alt="Deal of the Day"
                 className="w-full h-full object-fill group-hover:scale-105 transition-transform duration-300"
               />
-            </a>
+            </a> 
+
 
             {/* CARD 2 - Mattress */}
             <a 
@@ -103,6 +104,20 @@ const FurnitureLandingPage = () => {
 
         </div>
       </div>
+
+
+
+      <div className="w-full mt-2 flex justify-center">
+  <div className="w-full max-w-7xl rounded-lg overflow-hidden shadow-lg">
+    <img
+      src="/images/home/sndicobanner.png"
+      alt="Bottom Banner"
+      className="w-full h-full object-cover"
+    />
+  </div>
+</div>
+
+
     </div>
   );
 };
