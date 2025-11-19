@@ -4,6 +4,9 @@ import HeroSection  from '../components/home/heroSection';
 import ShopByCategories from '../components/home/shopByCategories';
 import LuxuryDesignComponent from '../components/home/luxuryDesignComponent';
 import BestProductCard from '../components/home/bestProductCard';
+
+import FurnitureSlider from '../components/home/furnitureSlider';
+import Footer from '../components/footer';
 export default function HomePage() {
   return (
     <>
@@ -12,7 +15,9 @@ export default function HomePage() {
       <ShopByCategories/>
       <LuxuryDesignComponent/>
       <BestProductCard/>
+      <FurnitureSlider/>
 
+      <Footer/>
 
     </>
   )
