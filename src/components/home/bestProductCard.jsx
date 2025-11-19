@@ -161,10 +161,10 @@ export default function BestSellerExplorer() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8 bg-white ">
+    <div className=" bg-gray-50 py-8 px-4 sm:px-6 lg:px-8 bg-white ">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
         {/* Header */}
-        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-[#000000] mb-6">
+        <h1 className="text-2xl md:text-3xl lg:text-3xl font-semibold text-center text-[#000000] mb-6">
 
           Explore Best Seller Category
         </h1>
@@ -175,7 +175,7 @@ export default function BestSellerExplorer() {
     <button
       key={category}
       onClick={() => setActiveCategory(category)}
-      className={`px-6 py-2.5 rounded-full text-[20px] font-medium transition-all duration-200 ${
+      className={`px-4 py-1.5 rounded-full text-[16px] font-medium transition-all duration-200 ${
         activeCategory === category
           ? 'bg-[#E8E8E8] text-[#404040]'
           : ' text-[#404040] hover:bg-[#D5D5D5]'

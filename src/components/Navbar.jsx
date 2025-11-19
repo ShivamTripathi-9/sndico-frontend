@@ -14,6 +14,11 @@ const navItems = [
   { id: "lighting", label: "Lighting & Decor" },
   { id: "interiors", label: "Interiors" },
   { id: "wsluxe", label: "WS Luxe" },
+   { id: "furnishings", label: "Furnishings" },
+  { id: "lighting", label: "Lighting & Decor" },
+  { id: "interiors", label: "Interiors" },
+  { id: "wsluxe", label: "WS Luxe" },
+  
 ];
 
 const menuData = {
@@ -222,7 +227,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="border-b">
+      <div >
         <div className="max-w-7xl mx-auto px-4 py-3 md:py-4">
           <div className="hidden md:flex justify-between items-center">
             <div className="text-2xl font-bold select-none">
@@ -283,48 +288,85 @@ export default function Header() {
         </div>
       </div>
 
-      <nav className="hidden md:block border-b">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex justify-center gap-1">
-            {navItems.map((item) => (
-              <div key={item.id} className="relative" onMouseEnter={() => setOpenId(item.id)} onMouseLeave={() => setOpenId(null)}>
-                <button className={`py-3.5 px-4 text-sm font-medium transition-all ${openId === item.id ? "border-b-2" : "text-gray-700 hover:text-orange-500"}`} style={openId === item.id ? { color: "#FF7F19", borderColor: "#FF7F19" } : {}}>
-                  {item.label}
-                </button>
-                {openId === item.id && menuData[item.id] && (
-                  <div className="fixed left-0 w-full bg-white shadow-lg border-t z-50">
-                    <div className="max-w-7xl mx-auto p-8">
-                      <div className="grid grid-cols-12 gap-8">
-                        <div className="col-span-9 grid grid-cols-3 gap-6">
-                          {menuData[item.id].columns.map((col, i) => (
-                            <ul key={i} className="space-y-2.5">
-                              {col.map((link) => (
-                                <li key={link} className="text-gray-700 text-sm hover:text-orange-500 cursor-pointer transition-colors">{link}</li>
-                              ))}
-                            </ul>
-                          ))}
-                        </div>
-                        {menuData[item.id].featured && (
-                          <div className="col-span-3 space-y-4">
-                            {menuData[item.id].featured.map((feature, idx) => (
-                              <div key={idx} className="text-center cursor-pointer hover:scale-105 transition-transform">
-                                <div className="bg-white rounded-lg overflow-hidden shadow-sm border">
-                                  <img src={feature.image} alt={feature.label} className="w-full h-32 object-cover" />
-                                </div>
-                                <p className="text-sm font-medium text-gray-700 mt-2">{feature.label}</p>
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                )}
+     {/* REPLACE your existing <nav> ... </nav> block with this */}
+<nav className="hidden md:block border-b">
+  <div className="max-w-7xl mx-auto">
+    {/* Make this wrapper relative so dropdown positions against it */}
+    <div
+      className="relative"
+      onMouseLeave={() => setOpenId(null)} // when leaving the whole nav area, close
+    >
+      {/* Nav row */}
+      <div className="flex gap-1 overflow-x-auto whitespace-nowrap no-scrollbar justify-centerlg:overflow-visible   lg:gap-2 ">
+  {navItems.map((item) => (
+    <div
+      key={item.id}
+      className="px-1"
+      onMouseEnter={() => setOpenId(item.id)}
+    >
+      <button
+        className={`py-3.5 px-4 text-sm font-medium whitespace-nowrap transition-all ${
+          openId === item.id ? "border-b-2" : "text-[#404040] hover:text-orange-500"
+        }`}
+        style={openId === item.id ? { color: "#FF7F19", borderColor: "#FF7F19" } : {}}
+      >
+        {item.label}
+      </button>
+    </div>
+  ))}
+</div>
+
+
+      {/* Single centralized dropdown (renders depending on openId) */}
+      {openId && menuData[openId] && (
+        <div className="absolute left-0 top-full w-full z-50">
+          {/* center the content and limit max width */}
+          <div className="max-w-7xl mx-auto bg-white shadow-lg p-8">
+            <div className="grid grid-cols-12 gap-8">
+              <div className="col-span-9 grid grid-cols-3 gap-6">
+                {menuData[openId].columns.map((col, i) => (
+                  <ul key={i} className="space-y-2.5">
+                    {col.map((link) => (
+                      <li
+                        key={link}
+                        className="text-gray-700 text-sm hover:text-orange-500 cursor-pointer transition-colors"
+                      >
+                        {link}
+                      </li>
+                    ))}
+                  </ul>
+                ))}
               </div>
-            ))}
+
+              {menuData[openId].featured && (
+                <div className="col-span-3 space-y-4">
+                  {menuData[openId].featured.map((feature, idx) => (
+                    <div
+                      key={idx}
+                      className="text-center cursor-pointer hover:scale-105 transition-transform"
+                    >
+                      <div className="bg-white rounded-lg overflow-hidden shadow-sm border">
+                        <img
+                          src={feature.image}
+                          alt={feature.label}
+                          className="w-full h-32 object-cover"
+                        />
+                      </div>
+                      <p className="text-sm font-medium text-gray-700 mt-2">
+                        {feature.label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </nav>
+      )}
+    </div>
+  </div>
+</nav>
+
 
       {mobileOpen && (
         <>

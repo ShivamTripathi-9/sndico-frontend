@@ -6,6 +6,7 @@ import LuxuryDesignComponent from '../components/home/luxuryDesignComponent';
 import BestProductCard from '../components/home/bestProductCard';
 
 import FurnitureSlider from '../components/home/furnitureSlider';
+import BlogSlider from '../components/home/blogSlider';
 import Footer from '../components/footer';
 export default function HomePage() {
   return (
@@ -16,6 +17,7 @@ export default function HomePage() {
       <LuxuryDesignComponent/>
       <BestProductCard/>
       <FurnitureSlider/>
+      <BlogSlider/>
 
       <Footer/>
 

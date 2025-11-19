@@ -58,11 +58,11 @@ export default function FurnitureSlider() {
   const canGoNext = startIndex + visibleCount < sliderItems.length;
 
   return (
-    <div className="w-full py-6">
+    <div className="w-full py-5 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Title */}
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center text-gray-900 mb-3">
+        <h2 className="text-2xl sm:text-3xl lg:text-3xl font-semibold text-center text-gray-900 mb-3">
           India's Finest Online Furniture Brand
         </h2>
 

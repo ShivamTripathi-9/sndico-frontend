@@ -33,7 +33,7 @@ export default function LuxuryDesignComponent() {
             </div>
             
             {/* Heading */}
-            <h1 className="text-[#000000] text-2xl lg:text-4xl font-bold mb-3 lg:mb-4 leading-tight">
+            <h1 className="text-[#000000] text-2xl lg:text-3xl font-semibold mb-3 lg:mb-4 leading-tight">
               Luxury Designs, Now More Adorable!
             </h1>
             
