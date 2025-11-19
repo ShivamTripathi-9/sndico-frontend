@@ -27,7 +27,7 @@ const FurnitureLandingPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white py-2 px-2 sm:py-4 sm:px-3 lg:px-6 xl:py-6">
+    <div className="w-full bg-white py-2 px-2 sm:py-4 sm:px-3 lg:px-6 xl:py-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-4">
 
