@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const BlogSlider = () => {
   const blogData = [
@@ -71,6 +71,15 @@ const BlogSlider = () => {
 
   const maxIndex = Math.max(0, blogData.length - cardsPerView);
 
+  // Auto slide every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev < maxIndex ? prev + 1 : 0));
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [maxIndex]);
+
   const handleTouchStart = (e) => {
     setTouchStart(e.targetTouches[0].clientX);
   };
@@ -97,253 +106,66 @@ const BlogSlider = () => {
     setTouchEnd(0);
   };
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => Math.max(prev - 1, 0));
-  };
-
   const handleCardClick = (link) => {
-    // Simulate page redirect
     alert(`Redirecting to: ${link}`);
-    // In a real application, you would use:
-    // window.location.href = link;
-    // or with React Router: navigate(link);
+  };
+
+  // Calculate translation based on cardsPerView
+  const getTranslateValue = () => {
+    if (cardsPerView === 3) return (currentIndex * 100) / 3;
+    if (cardsPerView === 2) return currentIndex * 50;
+    return currentIndex * 100;
   };
 
   return (
-    <div className="w-full  bg-white py-4  bg-white max-w-7xl mx-auto">
-      <h1 className="text-4xl lg:text-3xl font-semibold text-center mb-5 mt-0 text-[#000000]">
+    <div className="w-full bg-white py-4 max-w-7xl mx-auto px-4 sm:px-1 lg:px-8">
+      <h1 className="text-4xl lg:text-3xl font-semibold text-center mb-5 text-[#000000]">
         Blog
       </h1>
 
-      {/* Desktop View - 3 Cards Slider */}
-      <div className="hidden lg:block max-w-7xl mx-auto">
+      <div
+        className="relative overflow-hidden"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <div
-          className="relative overflow-hidden"
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
+          className="flex transition-transform duration-500 ease-out"
+          style={{ transform: `translateX(-${getTranslateValue()}%)` }}
         >
-          <div
-            className="flex transition-transform duration-500 ease-out"
-            style={{
-              transform: `translateX(-${currentIndex * (100 / 3)}%)`
-            }}
-          >
-            {blogData.map((blog) => (
+          {blogData.map((blog) => (
+            <div
+              key={blog.id}
+              className={`${cardsPerView === 3 ? 'w-1/3' : cardsPerView === 2 ? 'w-1/2' : 'w-full'} flex-shrink-0 px-3`}
+            >
               <div
-                key={blog.id}
-                className="w-1/3 flex-shrink-0 px-3"
+                className="bg-white rounded-lg overflow-hidden cursor-pointer"
+                onClick={() => handleCardClick(blog.link)}
               >
-                <div
-                  className="bg-white rounded-lg overflow-hidden "
-                  onClick={() => handleCardClick(blog.link)}
-                >
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img
-                      src={blog.image}
-                      alt={blog.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="p-3">
-                    <h3 className="text-1xl font-bold mb-1 text-[#333333]">
-                      {blog.title}
-                    </h3>
-                    <p className="text-[#666666] mb-1 leading-relaxed line-clamp-2">
-  {blog.description?.slice(0, 120)}
-  {blog.description?.length > 120 && (
-    <span className="text-blue-600 cursor-pointer">...more</span>
-  )}
-</p>
-
-                    <button className="flex items-center gap-2 text-[#FF7F19] font-medium">
-                      Read More
-                      <ArrowRight size={18} color="#FF7F19" />
-                    </button>
-                  </div>
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img
+                    src={blog.image}
+                    alt={blog.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-3">
+                  <h3 className="text-xl font-semibold mb-1 text-[#333333]">{blog.title}</h3>
+                  <p className="text-[#666666] mb-1 leading-relaxed line-clamp-2">
+                    {blog.description?.slice(0, 120)}
+                    {blog.description?.length > 120 && (
+                      <span className="text-blue-600 cursor-pointer">...more</span>
+                    )}
+                  </p>
+                  <button className="flex items-center gap-2 text-[#FF7F19] font-medium">
+                    Read More
+                    <ArrowRight size={18} color="#FF7F19" />
+                  </button>
                 </div>
               </div>
-            ))}
-          </div>
-
-          {/* Navigation Buttons for Desktop */}
-          {currentIndex > 0 && (
-            <button
-              onClick={prevSlide}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white rounded-full p-2 shadow-lg z-10"
-            >
-              <ChevronLeft size={24} className="text-gray-800" />
-            </button>
-          )}
-          {currentIndex < maxIndex && (
-            <button
-              onClick={nextSlide}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white rounded-full p-2 shadow-lg z-10"
-            >
-              <ChevronRight size={24} className="text-gray-800" />
-            </button>
-          )}
-        </div>
-
-        {/* Dots Indicator */}
-        {/* <div className="flex justify-center gap-2 mt-6">
-          {Array.from({ length: maxIndex + 1 }).map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`w-2 h-2 rounded-full transition-all ${
-                currentIndex === index ? 'bg-[#FF7F19] w-8' : 'bg-gray-300'
-              }`}
-            />
+            </div>
           ))}
-        </div> */}
-      </div>
-
-      {/* Tablet View - 2 Cards Slider */}
-      <div className="hidden md:block lg:hidden max-w-4xl mx-auto">
-        <div
-          className="relative overflow-hidden"
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-        >
-          <div
-            className="flex transition-transform duration-500 ease-out"
-            style={{
-              transform: `translateX(-${currentIndex * 50}%)`
-            }}
-          >
-            {blogData.map((blog) => (
-              <div
-                key={blog.id}
-                className="w-1/2 flex-shrink-0 px-3"
-              >
-                <div
-                  className="bg-white rounded-lg overflow-hidden "
-                  onClick={() => handleCardClick(blog.link)}
-                >
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img
-                      src={blog.image}
-                      alt={blog.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="p-3">
-                    <h3 className="text-xl font-semibold mb-0 text-[#333333]">
-                      {blog.title}
-                    </h3>
-                    <p className="text-[#666666] mb-1 leading-relaxed">
-                      {blog.description}
-                    </p>
-                    <button className="flex items-center gap-3 text-[#FF7F19] font-medium">
-                      Read More
-                      <ArrowRight size={18} color="#FF7F19" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Navigation Buttons for Tablet */}
-          {currentIndex > 0 && (
-            <button
-              onClick={prevSlide}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white rounded-full p-2 shadow-lg z-10"
-            >
-              <ChevronLeft size={24} className="text-gray-800" />
-            </button>
-          )}
-          {currentIndex < maxIndex && (
-            <button
-              onClick={nextSlide}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white rounded-full p-2 shadow-lg z-10"
-            >
-              <ChevronRight size={24} className="text-gray-800" />
-            </button>
-          )}
         </div>
-
-        {/* Dots Indicator */}
-        {/* <div className="flex justify-center gap-2 mt-0">
-          {Array.from({ length: maxIndex + 1 }).map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`w-2 h-2 rounded-full transition-all ${
-                currentIndex === index ? 'bg-[#FF7F19] w-8' : 'bg-gray-300'
-              }`}
-            />
-          ))}
-        </div> */}
-      </div>
-
-      {/* Mobile View - Single Card Slider */}
-      <div className="md:hidden max-w-md mx-auto">
-        <div
-          ref={sliderRef}
-          className="relative overflow-hidden"
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-        >
-          <div
-            className="flex transition-transform duration-500 ease-out"
-            style={{
-              transform: `translateX(-${currentIndex * 100}%)`
-            }}
-          >
-            {blogData.map((blog) => (
-              <div
-                key={blog.id}
-                className="w-full flex-shrink-0 px-4"
-              >
-                <div
-                  className="bg-white rounded-lg overflow-hidden "
-                  onClick={() => handleCardClick(blog.link)}
-                >
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img
-                      src={blog.image}
-                      alt={blog.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="p-3">
-                    <h3 className="text-xl font-semibold mb-0 text-gray-900">
-                      {blog.title}
-                    </h3>
-                    <p className="text-gray-600 mb-2 leading-relaxed">
-                      {blog.description}
-                    </p>
-                    <button className="flex items-center gap-2 text-[#FF7F19] font-medium">
-                      Read More
-                      <ArrowRight size={18} color="#FF7F19" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Dots Indicator */}
-        {/* <div className="flex justify-center gap-2 mt-6">
-          {blogData.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`w-2 h-2 rounded-full transition-all ${
-                currentIndex === index ? 'bg-[#FF7F19] w-8' : 'bg-gray-300'
-              }`}
-            />
-          ))}
-        </div> */}
       </div>
     </div>
   );

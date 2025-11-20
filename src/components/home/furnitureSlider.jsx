@@ -89,7 +89,8 @@ export default function FurnitureSlider() {
             onClick={prevSlide}
             disabled={!canGoPrev}
             className={`absolute left-0 top-1/2 -translate-y-1/2 z-20 
-                       w-6 h-6 lg:w-8 lg:h-8
+                       w-5 h-5 lg:w-8 lg:h-8
+                      
                        bg-[#AFAEAF66]  rounded-full 
                        flex items-center justify-center
                        transition-all duration-200 -ml-3
@@ -145,7 +146,7 @@ export default function FurnitureSlider() {
             onClick={nextSlide}
             disabled={!canGoNext}
             className={`absolute right-0 top-1/2 -translate-y-1/2 z-20
-                       w-6 h-6 lg:w-8 lg:h-8
+                       w-5 h-5 lg:w-8 lg:h-8
                        bg-[#AFAEAF66]  rounded-full 
                        flex items-center justify-center
                        transition-all duration-200
