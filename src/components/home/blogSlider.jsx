@@ -114,7 +114,7 @@ const BlogSlider = () => {
   };
 
   return (
-    <div className="w-full  bg-white py-5  bg-white max-w-7xl mx-auto">
+    <div className="w-full  bg-white py-4  bg-white max-w-7xl mx-auto">
       <h1 className="text-4xl lg:text-3xl font-semibold text-center mb-5 mt-0 text-[#000000]">
         Blog
       </h1>

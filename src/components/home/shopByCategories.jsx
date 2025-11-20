@@ -110,7 +110,7 @@ const ShopByCategories = () => {
   ];
 
   return (
-    <section className="w-full bg-white py-1 sm:py-12 bg-white max-w-7xl mx-auto">
+    <section className="w-full bg-white py-8 sm:py-12 bg-white max-w-7xl mx-auto">
       <div className="px-1 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-10">
           <h2 className="text-2xl sm:text-3xl lg:text-3xl font-semibold text-[#000000ff] mb-2">
