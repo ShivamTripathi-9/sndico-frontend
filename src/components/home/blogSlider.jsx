@@ -114,7 +114,7 @@ const BlogSlider = () => {
   };
 
   return (
-    <div className="w-full  bg-white py-5 px-4">
+    <div className="w-full  bg-white py-5  bg-white max-w-7xl mx-auto">
       <h1 className="text-4xl lg:text-3xl font-semibold text-center mb-5 mt-0 text-[#000000]">
         Blog
       </h1>
@@ -190,7 +190,7 @@ const BlogSlider = () => {
         </div>
 
         {/* Dots Indicator */}
-        <div className="flex justify-center gap-2 mt-6">
+        {/* <div className="flex justify-center gap-2 mt-6">
           {Array.from({ length: maxIndex + 1 }).map((_, index) => (
             <button
               key={index}
@@ -200,7 +200,7 @@ const BlogSlider = () => {
               }`}
             />
           ))}
-        </div>
+        </div> */}
       </div>
 
       {/* Tablet View - 2 Cards Slider */}
@@ -270,7 +270,7 @@ const BlogSlider = () => {
         </div>
 
         {/* Dots Indicator */}
-        <div className="flex justify-center gap-2 mt-0">
+        {/* <div className="flex justify-center gap-2 mt-0">
           {Array.from({ length: maxIndex + 1 }).map((_, index) => (
             <button
               key={index}
@@ -280,7 +280,7 @@ const BlogSlider = () => {
               }`}
             />
           ))}
-        </div>
+        </div> */}
       </div>
 
       {/* Mobile View - Single Card Slider */}
@@ -333,7 +333,7 @@ const BlogSlider = () => {
         </div>
 
         {/* Dots Indicator */}
-        <div className="flex justify-center gap-2 mt-6">
+        {/* <div className="flex justify-center gap-2 mt-6">
           {blogData.map((_, index) => (
             <button
               key={index}
@@ -343,7 +343,7 @@ const BlogSlider = () => {
               }`}
             />
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );

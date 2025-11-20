@@ -161,7 +161,7 @@ export default function BestSellerExplorer() {
   };
 
   return (
-    <div className=" bg-gray-50 py-8 px-4 sm:px-6 lg:px-8 bg-white ">
+    <div className=" bg-gray-50 py-1 px-4 sm:px-6 lg:px-1 bg-white max-w-7xl mx-auto ">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
         {/* Header */}
         <h1 className="text-2xl md:text-3xl lg:text-3xl font-semibold text-center text-[#000000] mb-6">

@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function LuxuryDesignComponent() {
   return (
-    <div className="w-full flex items-center justify-center bg-white">
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  flex flex-col lg:flex-row lg:h-[400px]">
+    <div className="w-full flex items-center justify-center bg-white max-w-7xl mx-auto">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-1  flex flex-col lg:flex-row lg:h-[400px] bg-white">
         {/* Image Section - 50% */}
         <div className="w-full lg:w-1/2 h-[300px] lg:h-[400px]">
           <img 

@@ -52,7 +52,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-gradient-to-br from-[#F4F4F4B0] to-gray-100 pt-12 pb-6">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-1">
         {/* Top Section - Logo and Social */}
         <div className="grid grid-cols-1 lg:grid-cols-6 gap-8 pb-8 border-b border-gray-300">
 

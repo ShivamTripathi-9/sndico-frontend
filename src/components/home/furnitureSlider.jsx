@@ -58,8 +58,8 @@ export default function FurnitureSlider() {
   const canGoNext = startIndex + visibleCount < sliderItems.length;
 
   return (
-    <div className="w-full py-5 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="w-full py-1 bg-white bg-white max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto px-1 sm:px-6 lg:px-8">
 
         {/* Title */}
         <h2 className="text-2xl sm:text-3xl lg:text-3xl font-semibold text-center text-gray-900 mb-3">
@@ -121,7 +121,7 @@ export default function FurnitureSlider() {
                   className="flex-shrink-0"
                   style={{ width: `calc(${100 / visibleCount}% - ${(visibleCount - 1) * (visibleCount === 4 ? 1.25 : 0.75)}rem / ${visibleCount})` }}
                 >
-                  <div className="bg-white rounded-xl overflow-hidden">
+                  <div className="bg-white  overflow-hidden">
                     <div className="relative overflow-hidden">
                       <img
                         src={item.img}

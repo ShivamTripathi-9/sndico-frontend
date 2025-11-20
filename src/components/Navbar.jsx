@@ -202,7 +202,7 @@ export default function Header() {
   const [mobileSearchOpen, setMobileSearchOpen] = React.useState(false);
 
   return (
-    <header className="w-full bg-white font-sans">
+    <header className="w-full bg-white font-sans bg-white max-w-7xl mx-auto">
       <div className="hidden md:block w-full" style={{ background: "#F9F8F2", height: "60px" }}>
         <div className="max-w-7xl mx-auto px-4 h-full flex justify-between items-center text-sm text-gray-700">
           <div className="flex gap-6 items-center">

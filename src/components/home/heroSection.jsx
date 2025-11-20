@@ -27,7 +27,7 @@ const FurnitureLandingPage = () => {
   };
 
   return (
-    <div className="w-full bg-white py-2 px-2 sm:py-4 sm:px-3 lg:px-6 xl:py-6">
+    <div className="w-full bg-white py-2 px-2 sm:py-4 sm:px-3 lg:px-6 xl:py-6 bg-white max-w-7xl mx-auto">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-4">
 
@@ -47,7 +47,7 @@ const FurnitureLandingPage = () => {
               className="hidden sm:block absolute left-2 lg:left-3 top-1/2 -translate-y-1/2  hover:bg-white p-1.5 lg:p-2 rounded-full shadow-lg transition-all z-10"
               aria-label="Previous slide"
             >
-              <ChevronLeft className="w-4 h-4 lg:w-6 lg:h-6 text-gray-800" />
+               
             </button>
             <button
               onClick={nextSlide}
