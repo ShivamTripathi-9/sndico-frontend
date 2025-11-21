@@ -14,10 +14,7 @@ const navItems = [
   { id: "lighting", label: "Lighting & Decor" },
   { id: "interiors", label: "Interiors" },
   { id: "wsluxe", label: "WS Luxe" },
-   { id: "furnishings", label: "Furnishings" },
-  { id: "lighting", label: "Lighting & Decor" },
-  { id: "interiors", label: "Interiors" },
-  { id: "wsluxe", label: "WS Luxe" },
+  
   
 ];
 

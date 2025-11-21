@@ -10,12 +10,15 @@ import BlogSlider from '../components/home/blogSlider';
 import TestimonialSlider from '../components/home/testimonialSlider';
 import HandleSubmit from '../components/home/handleSubmit';
 import Footer from '../components/footer';
+
+import SaleBanner from '../components/home/saleBanner';
 export default function HomePage() {
   return (
     <>
       <Navbar /> 
       
       <HeroSection />
+      <SaleBanner/>
       <ShopByCategories/>
       <LuxuryDesignComponent/>
       <BestProductCard/>
